@@ -1,0 +1,4 @@
+*.pyc
+dist/
+build/
+ec2hashcat.egg-info/

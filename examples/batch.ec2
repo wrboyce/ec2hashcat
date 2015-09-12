@@ -1,0 +1,5 @@
+#!/usr/bin/env ec2hashcat crack -b
+crack -a3 -m0 --hashcat-args='-1 ?l?d --increment' examples/hashlist.md5 '?1?1?1?1?1?1?1?1'
+crack -a0 -m0 -r builtin:rockyou-30000.rule examples/hashlist.md5 hashlist.dic
+crack -a0 -m0 -r builtin:toggles3.rule examples/hashlist.md5 hashlist.dic
+crack -a0 -m0 -r builtin:leetspeak.rule examples/hashlist.md5 hashlist.dic
