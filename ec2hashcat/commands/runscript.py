@@ -21,7 +21,8 @@ class BaseEc2InstanceSessionCommand(BaseEc2Accessor):
         ec2_args.add_argument('--ec2-instance-type', default='g2.8xlarge', help='ec2 instance type')
         ec2_args.add_argument('--ec2-volume-size', action='store_num', default=15, min=15, type=int,
                               help='ec2 root volume size (min=15)')
-        ec2_args.add_argument('--ec2-spot-instance', action='store_true', default=True, help='use ec2 spot instance')
+        ec2_args.add_argument('--ec2-no-spot-instance', action='store_false', default=True, dest='ec2_spot_instance',
+                              help='use ec2 spot instance')
         ec2_args.add_argument('-p', '--ec2-spot-price', default='avg',
                               help='bid to place for ec2 spot instance (USD/hour)')
 

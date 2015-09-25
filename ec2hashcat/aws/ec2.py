@@ -125,6 +125,7 @@ class Ec2Instance(object):
         ami_id = Ec2.region_ami_map[self.cfg.aws_region]
         ami_blockdevmap = self.ec2_client.describe_images(ImageIds=[ami_id])['Images'][0]['BlockDeviceMappings']
         ami_blockdevmap[0]['Ebs']['VolumeSize'] = self.cfg.ec2_volume_size
+        del ami_blockdevmap[0]['Ebs']['Encrypted']
         launch_spec = dict(
             ImageId=ami_id,
             KeyName=self.cfg.ec2_key_name,
@@ -138,7 +139,7 @@ class Ec2Instance(object):
                 MinCount=1,
                 MaxCount=1,
                 InstanceInitiatedShutdownBehavior='terminate',
-                **launch_spec)
+                **launch_spec)[0]
         else:
             zone_pricing = Ec2(self.cfg).get_spot_prices(meta=False)
             #zone = zone_pricing[len(zone_pricing) / 2][0]
