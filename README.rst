@@ -235,6 +235,15 @@ Delete all masks::
 
     % ec2hashcat secgrp del -a
 
+
+Benchmarks
+----------
+
+Benchmarks for the g2.8xlarge instance type, which is generally available for around $0.50/h, are available here_.
+
+.. _here: https://github.com/wrboyce/ec2hashcat/blob/master/benchmarks.txt
+
+
 Known Issues
 ------------
 
